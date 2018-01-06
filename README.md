@@ -17,7 +17,8 @@
 #post操作
 >
 >catik@catik-Aspire-V3-471:~$ curl -d "username=ooo&departname=1" http://localhost:8080/service/userinfo
->{
+```
+{
   "UID": 0,
   "UserName": "ooo",
   "DepartName": "1",
@@ -25,16 +26,18 @@
 }
 >[negroni] 2018-01-06T14:39:46+08:00 | 200 | 	 5.252831ms | localhost:8080 | POST /service/userinfo
 #sql ：
->mysql> SELECT  * FROM user_info;
+```
+mysql> SELECT  * FROM user_info;
 +-------+-----------+-------------+---------------------+
 | u_i_d | user_name | depart_name | create_at           |
 +-------+-----------+-------------+---------------------+
 |     1 | 1241      | 6           | 2018-01-06 14:53:45 |
 +-------+-----------+-------------+---------------------+
 1 row in set (0.00 sec)
-'''
+```
 #再次执行post
-'''
+
+```
 catik@catik-Aspire-V3-471:~$ curl -d "username=catik&departname=10" http://localhost:8080/service/userinfo
 {
   "UID": 2,
@@ -42,7 +45,7 @@ catik@catik-Aspire-V3-471:~$ curl -d "username=catik&departname=10" http://local
   "DepartName": "10",
   "CreateAt": "2018-01-06T15:04:27.99396656+08:00"
 }
-
+```
 catik@catik-Aspire-V3-471:~$ curl http://localhost:8080/service/userinfo?userid=[
   {
     "UID": 1,
@@ -57,9 +60,10 @@ catik@catik-Aspire-V3-471:~$ curl http://localhost:8080/service/userinfo?userid=
     "CreateAt": "2018-01-06T23:04:27+08:00"
   }
 ]
-'''
+```
+
 #sql
-'''
+```
 mysql> SELECT  * FROM user_info;
 +-------+-----------+-------------+---------------------+
 | u_i_d | user_name | depart_name | create_at           |
@@ -68,9 +72,9 @@ mysql> SELECT  * FROM user_info;
 |     2 | catik     | 10          | 2018-01-06 15:04:27 |
 +-------+-----------+-------------+---------------------+
 2 rows in set (0.00 sec)
-'''
+```
 #按照uid查询
-'''
+```
 catik@catik-Aspire-V3-471:~$ curl http://localhost:8080/service/userinfo?userid=1
 {
   "UID": 1,
@@ -78,9 +82,9 @@ catik@catik-Aspire-V3-471:~$ curl http://localhost:8080/service/userinfo?userid=
   "DepartName": "6",
   "CreateAt": "2018-01-06T22:53:45+08:00"
 }
-'''
+```
 #期间：服务器的返回信息
-'''
+```
 catik@catik-Aspire-V3-471:~/文档/cloudgo-data$ go run main.go
 [negroni] listening on :8080
 [negroni] 2018-01-06T14:53:40+08:00 | 200 | 	 1.66602ms | localhost:8080 | GET /service/userinfo
@@ -89,4 +93,4 @@ catik@catik-Aspire-V3-471:~/文档/cloudgo-data$ go run main.go
 [negroni] 2018-01-06T15:04:27+08:00 | 200 | 	 43.474316ms | localhost:8080 | POST /service/userinfo
 [negroni] 2018-01-06T15:04:30+08:00 | 200 | 	 1.582202ms | localhost:8080 | GET /service/userinfo
 [negroni] 2018-01-06T15:05:37+08:00 | 400 | 	 62.29422ms | localhost:8080 | GET /service/userinfo
-'''
+```
